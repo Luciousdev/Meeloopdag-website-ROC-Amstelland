@@ -142,7 +142,7 @@ $exercises = exercises2($user_id);
 </div>
 <footer class="bg-light fixed-bottom">
   <div class="container text-center">
-    <p>Gemaakt door <a href="https://luciousdev.nl" target="_blank">Lucy Puyenbroek</a> <a href="">source code</a></p>
+    <p>Gemaakt door <a href="https://luciousdev.nl" target="_blank">Lucy Puyenbroek</a> | <a href="https://github.com/Luciousdev/Meeloopdag-website-ROC-Amstelland" target="_blank">source code</a></p>
   </div>
 </footer>
 
