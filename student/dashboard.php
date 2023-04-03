@@ -83,12 +83,13 @@ $exercises = exercises2($user_id);
                     <tr>
                         <td><?php echo $exercise['title']; ?></td>
                         <?php 
-                            echo "<td title='behaalde punten/maximale punten: {$exercise['score']}/{$exercise['points']}'>";
                             switch($exercise['score']) {
                                 case NULL:
+                                    echo "<td title='Maximale punten: {$exercise['points']}'>";
                                     echo $exercise['points'];
                                     break;
                                 default:
+                                    echo "<td title='behaalde/maximale punten: {$exercise['score']}/{$exercise['points']}'>";
                                     echo $exercise['score']. '/' . $exercise['points']; 
                                     break;
                             }
