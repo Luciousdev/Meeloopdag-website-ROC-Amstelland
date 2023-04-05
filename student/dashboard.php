@@ -64,7 +64,7 @@ $exercises = exercises2($user_id);
         <p>Beste <?php echo $user_type['full_name'] ?>, leuk dat je meedoet aan de meeloop dag! Wij hebben een aantal opdrachten voorbereid zodat jij echt kan beleven hoe het is om hier student te zijn. Wij wensen je veel succes en als je vragen hebt kan je die altijd stellen aan een andere student. Je kan starten met de eerste opdracht "Voorbereidingen", daar vind je de verdere instructies<br><br><b>Veel succes!</b></p>
                     
     </div>
-	<div class="container mt-5">
+	<div class="container mt-5" style="margin-bottom: 50px;">
 		<h1>Opdrachten</h1>
 <?php
     if (count($exercises) > 0): ?>
@@ -110,10 +110,10 @@ $exercises = exercises2($user_id);
                         <td><?php  
                             switch ($exercise['submission_date']){
                                 case NULL:
-                                    echo "-";
+                                    echo "<p title='Nog geen opdracht ingeleverd'>-</p>";
                                     break;
                                 default:
-                                    echo $exercise['submission_date'];
+                                    echo "<p title='Opdracht ingeleverd op: {$exercise['submission_date']}'>".$exercise['submission_date']."</p>";
                                     break;
                             }
                         ?></td>

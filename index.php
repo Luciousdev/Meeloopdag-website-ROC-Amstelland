@@ -1,32 +1,52 @@
 <?php
 session_start();
 
-
-// include('./assets/scripts/db_connect.php');
-
-
+// Redirect to dashboard if the user is already logged in
 if(isset($_SESSION['user_id'])) {
-  header('Location: ./student/dashboard.php');
-  exit;
-}
-
-if(isset($_POST['full_name']) && isset($_POST['password'])) {
-  $full_name = $_POST['full_name'];
-  $password = $_POST['password'];
-
-  require './assets/scripts/sql.php';
-  $user = user($full_name);
-
-  if($user && password_verify($password, $user['password'])) {
-    $_SESSION['user_id'] = $user['id'];
-    $_SESSION['user_type'] = $user['type'];
-    // echo "test";
     header('Location: ./student/dashboard.php');
     exit;
-  } else {
-    $error = 'Invalid email or password';
-  }
 }
+
+// Process login form
+if (isset($_POST['full_name']) && isset($_POST['password'])) {
+    // Get form data
+    $full_name = trim($_POST['full_name']);
+    $password = $_POST['password'];
+
+    // Validate form data
+    if (empty($full_name) || empty($password)) {
+        $error = "Please fill out all fields";
+    } else {
+        try {
+            // Connect to database
+            require './assets/scripts/db_connect.php';
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            // Check if user exists and verify password
+            $stmt = $pdo->prepare("SELECT * FROM users WHERE full_name = :full_name");
+            $stmt->bindParam(":full_name", $full_name);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            $password = $_POST['password'];
+
+            if ($user && password_verify($password, $user['password']) == TRUE) {
+                // Login successful, set session variables and redirect to dashboard
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_type'] = $user['type'];
+                header('Location: ./student/dashboard.php');
+                exit;
+            } else {
+                // Invalid credentials
+                $error = "Incorrect username or password";
+            }
+        } catch (PDOException $e) {
+            $error = "Connection failed: " . $e->getMessage();
+        }
+        $pdo = null;
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +92,8 @@ if(isset($_POST['full_name']) && isset($_POST['password'])) {
                 <input type="password" class="form-control" id="password" name="password" required>
               </div>
               <button type="submit" class="btn btn-primary">Inloggen</button>
-            </form>
+				<button class="btn btn-secondary"><a style="color:white;" href="signup.php">Account maken</a></button>
+			</form>
           </div>
         </div>
       </div>

@@ -54,7 +54,7 @@ $Parsedown = new Parsedown();
             </ul>
         </div>
     </nav>
-    <div class="container mt-5">
+    <div class="container mt-5" style="margin-bottom: 15px;">
     <h3>Feedback</h3>
     <hr>
         <?php if (empty($feedback)): ?>
@@ -97,7 +97,7 @@ $Parsedown = new Parsedown();
                     <label for="submission"></label>
                     <textarea class="form-control" id="submission" name="submission" rows="10"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Inleveren</button>
             </form>
         <?php else:?>
             <h2>Bij deze opdracht hoef je niets in te leveren!</h2>
