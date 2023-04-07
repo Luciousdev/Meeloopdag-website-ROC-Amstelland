@@ -16,6 +16,14 @@ $user_type = usertypeGrade($teacher_id);
 $row = submissionsGrade($id);
 
 
+if($row["status"] == "graded"){
+  $gradeSubmission = getGrade($id);
+  
+  $teach_id = $gradeSubmission["teacher_id"];
+  $teacherName = getTeacherName($teach_id);
+} else {
+
+}
 
 if (isset($_POST['submit'])) {
   $score = $_POST['score'];
@@ -31,7 +39,7 @@ if (isset($_POST['submit'])) {
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Grade Submission</title>
+  <title>Nakijken</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
@@ -49,8 +57,21 @@ if (isset($_POST['submit'])) {
 		</div>
 	</nav>
   <div class="container">
-    <h1>Submission Text</h1>
-    <p><?php echo nl2br(htmlspecialchars($row['text_submission'])); ?></p>
+    <h1 class="mt-4 mb-5">Inlevering:</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Ingeleverd:</h3>
+            <p><?php echo nl2br(htmlspecialchars($row['text_submission'])); ?></p>
+        </div>
+        <?php if($row["status"] == "graded"): ?>
+        <div class="col-md-4 border-left pt-3">
+            <h3>Beoordeling:</h3>
+            <p>Punten: <?php echo $gradeSubmission["score"]; ?></p>
+            <p>Feedback: <?php echo $gradeSubmission["feedback"]; ?></p>
+            <p>Nagekeken door: <?php echo $teacherName[0]; ?></p>
+        </div>
+        <?php endif; ?>
+    </div>
     <?php if ($row['status'] == 'submitted'): ?>
 
 
