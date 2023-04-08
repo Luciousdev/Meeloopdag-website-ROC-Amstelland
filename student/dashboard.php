@@ -64,15 +64,15 @@ $exercises = exercises2($user_id);
 	</nav>
     <div class="container mt-5">
         <?php if($user_type['type'] === 'teacher'): ?>
-		<?php if(!$newsmessage): ?>
-		<?php else: ?>
-        <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
-            <div class="card-header">Nieuws (<?php echo $newsmessage[0]["created_at"]; ?>)</div>
-            <div class="card-body">
-                <p class="card-text"><?php echo $newsmessage[0]["message"]; ?></p>
-            </div>
-        </div>
-		<?php endif ?>
+		    <?php if(!$newsmessage): ?>
+		    <?php else: ?>
+                <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Nieuws (<?php echo $newsmessage[0]["created_at"]; ?>)</div>
+                    <div class="card-body">
+                        <p class="card-text"><?php echo $newsmessage[0]["message"]; ?></p>
+                    </div>
+                </div>
+		    <?php endif ?>
         <?php endif ?>
         <h1>Welkom</h1>
         <p>Beste <?php echo $user_type['full_name'] ?>, leuk dat je meedoet aan de meeloop dag! Wij hebben een aantal opdrachten voorbereid zodat jij echt kan beleven hoe het is om hier student te zijn. Wij wensen je veel succes en als je vragen hebt kan je die altijd stellen aan een andere student. Je kan starten met de eerste opdracht "Voorbereidingen", daar vind je de verdere instructies<br><br><b>Veel succes!</b><br><br>Als je nog tijd over hebt/feedback wilt geven dan kan dat <a href="https://forms.gle/9cnvB1uBZugynniH7">HIER</a></p>
