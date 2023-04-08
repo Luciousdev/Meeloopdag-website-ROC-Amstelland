@@ -63,7 +63,7 @@ arsort($count2);
 		</div>
 	</nav>
     <div class="container mt-5">
-        <h3>Users admin:</h3>
+        <h3>Gebruikers status veranderen:</h3>
         <form method='post' action=''>
             <div class="form-group">
                 <label for="usersAdminID">Gebruikers ID:</label>
@@ -85,7 +85,7 @@ arsort($count2);
         <form method='post' action=''>
             <div class='form-group'>
                 <label for="usersAdminID">Bericht:</label>
-                <input type='text' class="form-control" id="usersAdminID" name='usersAdminID' required>
+                <input type='text' class="form-control" id="usersAdminID" name='usersAdminID'>
             </div>
             <button type="submit" class="btn btn-primary" name='text'>Verstuur</button>
         </form>    
