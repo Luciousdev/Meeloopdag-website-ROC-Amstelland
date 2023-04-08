@@ -14,6 +14,12 @@ if (isset($_POST['admin_status'])) {
     echo "<script>alert('Gebruikers status is veranderd!')</script>";
 }
 
+if (isset($_POST['text'])) {
+    $text = $_POST['usersAdminID'];
+    setNewsMessage($text);
+    echo "<script>alert('Nieuws bericht aangepast!')</script>";
+}
+
 $count2 = array();
 foreach ($test as $item) {
     $name = $item["full_name"];
@@ -72,6 +78,16 @@ arsort($count2);
             </div>
             <button type="submit" class="btn btn-primary" name='admin_status'>Verander status</button>
             <button class="btn btn-secondary"><a style="color:white;" href="users.php">Bekijk gebruikers</a></button>
+        </form>    
+    </div>
+    <div class="container mt-5">
+        <h3>Nieuws bericht (alleen zichtbaar voor docenten):</h3>
+        <form method='post' action=''>
+            <div class='form-group'>
+                <label for="usersAdminID">Bericht:</label>
+                <input type='text' class="form-control" id="usersAdminID" name='usersAdminID' required>
+            </div>
+            <button type="submit" class="btn btn-primary" name='text'>Verstuur</button>
         </form>    
     </div>
     <div class="container mt-5">
