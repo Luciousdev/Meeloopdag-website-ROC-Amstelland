@@ -64,7 +64,7 @@ $exercises = exercises2($user_id);
 	</nav>
     <div class="container mt-5">
         <?php if($user_type['type'] === 'teacher'): ?>
-		    <?php if(!$newsmessage['message']): ?>
+		    <?php if(!$newsmessage[0]['message']): ?>
 		    <?php else: ?>
                 <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
                     <div class="card-header">Nieuws (<?php echo $newsmessage[0]["created_at"]; ?>)</div>
