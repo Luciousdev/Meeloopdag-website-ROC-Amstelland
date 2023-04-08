@@ -93,7 +93,7 @@ arsort($count2);
                                 $count++;
                             }
                         }
-                        echo $count;
+                        echo $count - 1;
                     ?></td>
                 </tr>
                 <tr>
@@ -105,7 +105,7 @@ arsort($count2);
                             $count++;
                         }
                     }
-                    echo $count;
+                    echo $count - 1;
                     ?></td>
                 </tr>
             </tbody>
@@ -143,7 +143,7 @@ arsort($count2);
 
             ],
             datasets: [{
-            label: 'Exercises graded',
+            label: 'Opdrachten nagekeken',
             data: [
             <?php
             for ($i = 0; $i < count($teacherNames); $i++) {
