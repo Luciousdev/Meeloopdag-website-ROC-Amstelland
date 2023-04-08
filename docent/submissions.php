@@ -18,6 +18,7 @@ $result = resultSubmissions();
 <html>
 <head>
   <title>Ingeleverde opdrachten</title>
+  <link rel="icon" type="image/png" href="../assets/img/logo.png
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>

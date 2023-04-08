@@ -18,13 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     submission_submit($user_id, $exercise_id, $submission);
 
-    // Insert or update the submission in the database
-    // $stmt = $pdo->prepare("INSERT INTO submissions (student_id, assignment_id, text_submission) VALUES (:student_id, :assignment_id, :text_submission) ON DUPLICATE KEY UPDATE text_submission = :text_submission");
-    // $stmt->bindParam(":student_id", $user_id, PDO::PARAM_INT);
-    // $stmt->bindParam(":assignment_id", $exercise_id, PDO::PARAM_INT);
-    // $stmt->bindParam(":text_submission", $submission);
-    // $stmt->execute();
-
     header("location: opdracht.php?id=$exercise_id");
     exit();
 } else {

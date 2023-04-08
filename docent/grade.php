@@ -42,6 +42,7 @@ if (isset($_POST['submit'])) {
 <head>
   <meta charset="UTF-8">
   <title>Nakijken</title>
+  <link rel="icon" type="image/png" href="../assets/img/logo.png">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
