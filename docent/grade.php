@@ -7,6 +7,8 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+checkIfTeacher();
+
 // assign id's to variables
 $id = $_GET['id'];
 $teacher_id = $_SESSION['user_id'];
