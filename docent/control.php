@@ -82,7 +82,7 @@ arsort($count2);
                 <tbody>
                     <tr>
                         <th scope="row">Totaal ingeleverde opdrachten:</th>
-                        <td><?php echo count($test);?></td>
+                        <td><?php echo count($test) -1;?></td>
                     </tr>
                     <tr>
                         <th scope="row">Nagekeken opdrachten:</th>
@@ -105,7 +105,7 @@ arsort($count2);
                             $count++;
                         }
                     }
-                    echo $count - 1;
+                    echo $count;
                     ?></td>
                 </tr>
             </tbody>
