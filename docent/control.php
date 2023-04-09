@@ -88,6 +88,7 @@ arsort($count2);
                 <input type='text' class="form-control" id="usersAdminID" name='usersAdminID'>
             </div>
             <button type="submit" class="btn btn-primary" name='text'>Verstuur</button>
+            <button class="btn btn-secondary"><a style="color:white;" href="newsdelete.php">Verwijder bericht</a></button>
         </form>    
     </div>
     <div class="container mt-5">
