@@ -139,72 +139,71 @@ arsort($count2);
         </div>
     </div>
 </div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
+    <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+        labels: [
+    <?php 
 
-            <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
-            <script>
-            var ctx = document.getElementById('myChart').getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                labels: [
-        <?php 
+    $teacherNames = array_keys($count2);
+    for ($i = 0; $i < count($teacherNames); $i++) {
+        echo "'" . $teacherNames[$i] . "'";
+        if ($i < count($teacherNames) - 1) {
+            echo ",";
+        }
+    }
+    ?>
 
-            $teacherNames = array_keys($count2);
-            for ($i = 0; $i < count($teacherNames); $i++) {
-                echo "'" . $teacherNames[$i] . "'";
-                if ($i < count($teacherNames) - 1) {
-                    echo ",";
-                }
-            }
-        ?>
+    ],
+    datasets: [{
+    label: 'Opdrachten nagekeken',
+    data: [
+    <?php
+    for ($i = 0; $i < count($teacherNames); $i++) {
+        echo $count2[$teacherNames[$i]];
+        if ($i < count($teacherNames) - 1) {
+            echo ",";
+        }
+    }
+    ?>
+    ],
+    backgroundColor: [
 
-            ],
-            datasets: [{
-            label: 'Opdrachten nagekeken',
-            data: [
-            <?php
-            for ($i = 0; $i < count($teacherNames); $i++) {
-                echo $count2[$teacherNames[$i]];
-                if ($i < count($teacherNames) - 1) {
-                    echo ",";
-                }
-            }
-            ?>
-            ],
-            backgroundColor: [
+    <?php
+    for ($i = 0; $i < count($teacherNames); $i++) {
+        echo "'rgba(" . rand(0, 255) . ", " . rand(0, 255) . ", " . rand(0, 255) . ", 0.2)'";
+        if ($i < count($teacherNames) - 1) {
+            echo ",";
+        }
+    }
+    ?>
 
-            <?php
-            for ($i = 0; $i < count($teacherNames); $i++) {
-                echo "'rgba(" . rand(0, 255) . ", " . rand(0, 255) . ", " . rand(0, 255) . ", 0.2)'";
-                if ($i < count($teacherNames) - 1) {
-                    echo ",";
-                }
-            }
-            ?>
+    ],
+    borderColor: [
 
-            ],
-            borderColor: [
-
-            <?php
-            for ($i = 0; $i < count($teacherNames); $i++) {
-                echo "'rgba(" . rand(0, 255) . ", " . rand(0, 255) . ", " . rand(0, 255) . ", 1)'";
-                echo ",";
-            }
-            ?>
-            ],
-            borderWidth: 1
-            }]
-            },
-            options: {
-            scales: {
-            yAxes: [{
-            ticks: {
-            beginAtZero:true
-            }
-            }]
-            }
-            }
-            });
-            </script>                                  
-    </body>
-</html> 
+    <?php
+    for ($i = 0; $i < count($teacherNames); $i++) {
+        echo "'rgba(" . rand(0, 255) . ", " . rand(0, 255) . ", " . rand(0, 255) . ", 1)'";
+        echo ",";
+    }
+    ?>
+    ],
+    borderWidth: 1
+    }]
+    },
+    options: {
+    scales: {
+    yAxes: [{
+    ticks: {
+    beginAtZero:true
+    }
+    }]
+    }
+    }
+    });
+    </script>                                  
+</body>
+</html>
