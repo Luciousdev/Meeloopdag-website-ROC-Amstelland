@@ -16,8 +16,9 @@ if ($user_type[0]['type'] === 'teacher') {
         $description = htmlspecialchars(trim($_POST["instructions"]));
         $points = intval($_POST["points"]);
         $inleverbaar = $_POST['inleverbaar'];
+        $antwoord = $_POST['antwoord'];
 
-        insertCreateAss($title, $description, $points, $inleverbaar);
+        insertCreateAss($title, $description, $points, $inleverbaar, $antwoord);
 
         header("location: ../student/dashboard.php");
         exit();
@@ -51,7 +52,7 @@ if ($user_type[0]['type'] === 'teacher') {
             </ul>
         </div>
     </nav>
-    <div class="container mt-5">
+    <div style="margin-bottom:30px;" class="container mt-5">
         <h1>Opdracht aanmaken</h1>
         <form method="post" action="create.php">
             <div class="form-group">
@@ -73,6 +74,10 @@ if ($user_type[0]['type'] === 'teacher') {
                 <label for="instructions">Opdracht:</label>
                 <textarea class="form-control" id="instructions" name="instructions" rows="10"></textarea>
             </div>
+            <div class="form-group">
+                <label for="antwoord">Nakijk model/mogelijk antwoord:</label>
+                <textarea class="form-control" id="antwoord" name="antwoord" rows="10"></textarea>
+            </div>
             <button type="submit" class="btn btn-primary">Opdracht aanmaken</button>
         </form>
     </div>
@@ -83,6 +88,10 @@ if ($user_type[0]['type'] === 'teacher') {
     <script>
         let instructionsEditor = new SimpleMDE({
             element: document.getElementById("instructions")
+        });
+
+        let antwoordEditor = new SimpleMDE({
+            element: document.getElementById("antwoord")
         });
     </script>
 </body>

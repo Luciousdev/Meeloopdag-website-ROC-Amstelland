@@ -9,6 +9,10 @@ if (session_status() == PHP_SESSION_NONE) {
 
 checkIfTeacher();
 
+// ERROR REPORTING TURNED OFF!!! FIXME
+error_reporting(E_ERROR);
+// ERROR REPORTING TURNED OFF!!! FIXME
+
 // assign id's to variables
 $id = $_GET['id'];
 $teacher_id = $_SESSION['user_id'];
@@ -17,6 +21,8 @@ $user_type = usertypeGrade($teacher_id);
 
 $row = submissionsGrade($id);
 
+$assignment_id = $row['assignment_id'];
+$assignmentAnswer = assignmentAnswer($assignment_id);
 
 if($row["status"] == "graded"){
   $gradeSubmission = getGrade($id);
@@ -63,8 +69,8 @@ if (isset($_POST['submit'])) {
     <h1 class="mt-4 mb-5">Inlevering:</h1>
     <div class="row">
         <div class="col-md-8">
-            <h3>Ingeleverd:</h3>
-            <p><?php echo nl2br(htmlspecialchars($row['text_submission'])); ?></p>
+          <h3>Ingeleverd:</h3>
+          <p><?php echo nl2br(htmlspecialchars($row['text_submission'])); ?></p>
         </div>
         <?php if($row["status"] == "graded"): ?>
         <div class="col-md-4 border-left pt-3">
@@ -91,6 +97,12 @@ if (isset($_POST['submit'])) {
       <button type="submit" class="btn btn-primary" name="submit">Submit</button>
     </form>
     <?php endif; ?>
+    <?php if($assignmentAnswer['good_answer'] === NULL): ?>
+      <center style="font-size:larger; margin-top:40px;" class="alert alert-danger">Er is geen antwoordmodel voor deze opdracht!</center>
+    <?php else:?>
+      <h3 style="padding-top:50px;">Goed antwoord:</h3>
+      <p><?php echo nl2br(htmlspecialchars($assignmentAnswer['good_answer'])); ?></p>
+    <?php endif?>
   </div>
 </body>
 </html>

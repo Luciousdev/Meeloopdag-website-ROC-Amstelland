@@ -40,6 +40,7 @@ $users = retrieveAllUsers()
                 <tr>
                     <th>ID</th>
                     <th>Naam</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,6 +48,7 @@ $users = retrieveAllUsers()
                 <tr>
                     <td><?php echo $user['id']; ?></td>
                     <td><?php echo $user['full_name']; ?></td>
+                    <td><?php echo $user['type']; ?></td>
                 </tr>
                 <?php endforeach ?>
             </tbody>
