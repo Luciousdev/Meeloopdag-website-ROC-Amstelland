@@ -100,8 +100,10 @@ if (isset($_POST['submit'])) {
     <?php if($assignmentAnswer['good_answer'] === NULL): ?>
       <center style="font-size:larger; margin-top:40px;" class="alert alert-danger">Er is geen antwoordmodel voor deze opdracht!</center>
     <?php else:?>
-      <h3 style="padding-top:50px;">Goed antwoord:</h3>
-      <p><?php echo nl2br(htmlspecialchars($assignmentAnswer['good_answer'])); ?></p>
+      <?php if($row['status'] == 'submitted'): ?>
+        <h3 style="padding-top:50px;">Goed antwoord:</h3>
+        <p><?php echo nl2br(htmlspecialchars($assignmentAnswer['good_answer'])); ?></p>
+        <?php endif?>
     <?php endif?>
   </div>
 </body>
