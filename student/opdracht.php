@@ -64,7 +64,7 @@ $Parsedown = new Parsedown();
             </div>
         <?php else: ?>
             <div class="grade">
-                <?php if (empty($feedback[0]['score'])): ?>
+                <?php if ($feedback[0]['score'] < 0): ?>
                     <div class="alert alert-info">
                         Your teacher has not yet provided a grade.
                     </div>
